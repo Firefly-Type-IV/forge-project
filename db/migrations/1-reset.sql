@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS workout_template;
-DROP TABLE IF EXISTS category;
-DROP TABLE IF EXISTS workout_template_category;
-DROP TABLE IF EXISTS exercise_type;
 DROP TABLE IF EXISTS rating;
+DROP TABLE IF EXISTS category;
+DROP TABLE IF EXISTS workout_category;
+DROP TABLE IF EXISTS exercise_type;
 DROP TABLE IF EXISTS workout_exercise;
 
 CREATE TABLE IF NOT EXISTS user (
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS category (
     name TEXT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS workout_template_category (
+CREATE TABLE IF NOT EXISTS workout_category (
     workout_id INTEGER NOT NULL,
     category_id INTEGER NOT NULL,
     FOREIGN KEY (workout_id) REFERENCES workout_template(id),

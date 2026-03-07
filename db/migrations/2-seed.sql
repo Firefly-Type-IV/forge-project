@@ -20,7 +20,7 @@ INSERT INTO category (name) VALUES
 ('Resistance'),
 ('Endurance');
 
-INSERT INTO workout_template_category (workout_id, category_id) VALUES
+INSERT INTO workout_category (workout_id, category_id) VALUES
 (1, 2),
 (1, 5),
 (2, 1),

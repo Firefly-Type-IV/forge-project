@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "node index.js",
+    "run": "node server/index.js",
+    "dev": "nodemon server/run.js",
     "db:reset": "sqlite3 db/db.sqlite < db/migrations/1-reset.sql",
     "db:seed": "sqlite3 db/db.sqlite < db/migrations/2-seed.sql"
   },
