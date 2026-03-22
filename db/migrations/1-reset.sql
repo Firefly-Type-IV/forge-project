@@ -9,8 +9,8 @@ DROP TABLE IF EXISTS workout_exercise;
 CREATE TABLE IF NOT EXISTS user (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     full_name TEXT NOT NULL,
-    username TEXT NOT NULL,
-    email TEXT NOT NULL,
+    username TEXT NOT NULL UNIQUE,
+    email TEXT NOT NULL UNIQUE,
     password_hash TEXT NOT NULL,
     joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -59,5 +59,5 @@ CREATE TABLE IF NOT EXISTS workout_exercise (
     target_reps TEXT NOT NULL,
     target_sets TEXT NOT NULL,
     FOREIGN KEY (exercise_type_id) REFERENCES exercise_type(id),
-    FOREIGN KEY (workout_id) REFERENCES workout_template(id)
-)
+    FOREIGN KEY (workout_id) REFERENCES workout_template(id) ON DELETE CASCADE
+);
