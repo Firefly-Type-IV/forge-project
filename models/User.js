@@ -18,6 +18,12 @@ class User {
         const rows = db.raw(query, [id]);
         return rows[0];
     };
+
+    static async create(fullname, username, email, password_hash) {
+        const query = `
+            INSERT INTO user (fullname, username, email, password-hash) VALUES (?, ?, ?, ?);
+        `;
+    };
 };
 
 export default User;

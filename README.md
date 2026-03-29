@@ -71,3 +71,23 @@ AC4: Pressing save button updates the database.
   AC1: User must enter a valid email address and strong password
   AC2: System validates username or email not already in use
   AC3: Passwords are hashed before being written to the database.
+
+# Sprint 1
+
+- User Story 1: "As a user, I want to create an account using my email and password, so that I can access my data securely."
+  - AC1: User must enter a valid email address and strong password
+    - Form with input fields for username, email, and password
+    - Use front end validation for emails using regex @
+    - Password strength: 8 min character length, uppercase, lowercase, number, special character
+    - UI feedback: greyed out submit, red error messages for empty or not met fields
+  - AC2: System checks if email is already in use
+    - On form submit, the server should query the user's table
+    - If email exist in database display clear error message, otherwise proceed with inserting record into database
+  - AC3: Passwords are hashed before being written to the database.
+    - Plain text must never be stored in database
+    - hash password using bcrypt algorithm
+    - insert record for new user containing email and hashed-password
+- QA testcases
+  - Observe submit button is greyed if any invalid entries are present, i.e. incorrect length of password
+  - Observe duplicate email trigger error, and no records are inserted until rectified
+  - Observe database upon successful registration whether password is not plain text
