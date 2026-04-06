@@ -1,5 +1,5 @@
 import db from '../db/index.js';
-
+// User class for interacting with user table
 class User {
     static async getAll() {
         const rows = db.raw(`
@@ -18,12 +18,17 @@ class User {
         const rows = db.raw(query, [id]);
         return rows[0];
     };
+// Request only what you need i.e. username, email, pass
+    static async setUser({fullname, username, email, password}) {
+        const query =  `
+        INSERT INTO user
+        (full_name, username, email, password_hash)
+        VALUES (?, ?, ?, ?)
+        RETURNING*`;
 
-    static async create(fullname, username, email, password_hash) {
-        const query = `
-            INSERT INTO user (fullname, username, email, password-hash) VALUES (?, ?, ?, ?);
-        `;
-    };
+        const rows = db.raw(query, [fullname, username, email, password]);
+        return rows[0];
+    }
 };
 
 export default User;

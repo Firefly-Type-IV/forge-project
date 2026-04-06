@@ -7,9 +7,9 @@ export const getUserById = async (req, res) => {
     const user = await User.getById();
     res.json(user);
 }
+export const loginUser = async (req, res) => {
+    const {email, password} = req.body
+}
 export const createUser = async (req, res) => {
-    const user = await User.create();
-    console.log(req)
-    console.log(user)
-
+    
 }
