@@ -19,14 +19,14 @@ class User {
         return rows[0];
     };
 // Request only what you need i.e. username, email, pass
-    static async setUser({fullname, username, email, password}) {
+    static async setUser({full_name, username, email, password_hash}) {
         const query =  `
         INSERT INTO user
         (full_name, username, email, password_hash)
         VALUES (?, ?, ?, ?)
         RETURNING*`;
 
-        const rows = db.raw(query, [fullname, username, email, password]);
+        const rows = await db.raw(query, [full_name, username, email, password_hash]);
         return rows[0];
     }
 };
